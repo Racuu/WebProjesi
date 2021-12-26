@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+@model IEnumerable<WebProgProje.Models.FilmModel.Film>
+
+<div class="container">
+    <h1 class="my-4 green">
+        @ViewData["Title"]
+    </h1>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 green" >
+                <div class="card mb-1 bg-dark">
+                    <img class="card-img-top" width="270" height="400" src="@Html.DisplayFor(modelItem => item.ResimUrl)" alt="Card image cap">
+                    <div class="card-body">
+                        <h2 class="card-title">@Html.DisplayFor(modelItem => item.Baslik)</h2>
+                        <p class="card-text cut-text">@Html.DisplayFor(modelItem => item.Yazi)</p>
+                        <a type="button" class="btn btn-outline-light" asp-controller="Films" asp-action="Details" asp-route-id="@item.Id">Detaylar</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Tarih: @Html.DisplayFor(modelItem => item.YaziGiris)
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+    <!-- /.row -->
+
+</div>

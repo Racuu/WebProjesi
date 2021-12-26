@@ -1,0 +1,48 @@
+﻿@model WebProgProje.Models.FilmModel.Film
+
+@{
+    ViewData["Title"] = "Film Detayları";
+}
+
+<h1 class="green">Detaylar</h1>
+
+<div class="green">
+    <h4>Film</h4>
+    <hr />
+    <div class="row mb-5">
+        <div class="col-md-6 mb-5">
+            <img class="card-img-top" src="@Html.DisplayFor(model => model.ResimUrl)" alt="Card image cap" style="width:350px;height:350px;">
+        </div>
+
+        <div class="row col-md-6">
+            <div class="col-sm-12">
+                <h3>@Html.DisplayNameFor(model => model.Baslik)</h3>
+                <p>@Html.DisplayFor(model => model.Baslik)</p>
+            </div>
+            <div class="col-sm-12">
+                <h3>@Html.DisplayNameFor(model => model.YaziGiris)</h3>
+
+                <p>@Html.DisplayFor(model => model.YaziGiris)</p>
+            </div>
+            <div class="col-sm-12">
+                <h3>@Html.DisplayNameFor(model => model.Etiket)</h3>
+                <p>@Html.DisplayFor(model => model.Etiket)</p>
+            </div>
+        </div>
+    </div>
+    <h2>
+        @Html.DisplayFor(model => model.Baslik) İncelemesi
+    </h2>
+    
+    <div class="mb-5">
+        <p style="font-size:16px">@Html.DisplayFor(model => model.Yazi)</p>
+    </div>
+
+</div>
+<div class="green">
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.Id">Düzenle</a>
+    }
+    <a asp-action="Index">Listeye geri dön</a>
+</div>
